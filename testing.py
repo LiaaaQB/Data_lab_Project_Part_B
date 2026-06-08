@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from datetime import datetime
 from pathlib import Path
+import random
 from typing import TextIO
 
 from eval import evaluate_run, load_query_file
@@ -11,14 +12,12 @@ from index import build_index
 from retrieve import search_batch
 from utils import K_EVAL, PUBLIC_QUERIES_PATH
 
-DEFAULT_SAMPLE_SIZE = 200
+DEFAULT_SAMPLE_SIZE = 1000
 DEFAULT_TOP_K = 5
+DEFAULT_QUERY_COUNT = 5
+DEFAULT_QUERY_SEED = 22
 DEFAULT_ARTIFACTS_DIR = Path(__file__).resolve().parent / "testing_artifacts"
 DEFAULT_LOG_PATH = Path(__file__).resolve().parent / "past_tests.txt"
-DEFAULT_QUERIES = [
-    "basketball championship",
-    "scientific research and technology",
-]
 
 
 def parse_args() -> argparse.Namespace:
@@ -38,16 +37,22 @@ def parse_args() -> argparse.Namespace:
         help="Output directory for the test index.",
     )
     parser.add_argument(
-        "--query",
-        action="append",
-        dest="queries",
-        help="Retrieval query. Repeat this option to test multiple queries.",
-    )
-    parser.add_argument(
         "--top-k",
         type=int,
         default=DEFAULT_TOP_K,
         help=f"Number of results per query (default: {DEFAULT_TOP_K}).",
+    )
+    parser.add_argument(
+        "--query-count",
+        type=int,
+        default=DEFAULT_QUERY_COUNT,
+        help=f"Number of public queries to display (default: {DEFAULT_QUERY_COUNT}).",
+    )
+    parser.add_argument(
+        "--query-seed",
+        type=int,
+        default=DEFAULT_QUERY_SEED,
+        help=f"Random seed for selecting public queries (default: {DEFAULT_QUERY_SEED}).",
     )
     parser.add_argument(
         "--log-path",
@@ -64,12 +69,13 @@ def log(message: str = "", *, file: TextIO) -> None:
 
 
 def test_retrieval(
-    queries: list[str],
+    query_rows: list[dict],
     *,
     top_k: int,
     artifacts_dir: Path,
     log_file: TextIO,
 ) -> None:
+    queries = [row["query"] for row in query_rows]
     ranked_results = search_batch(
         queries,
         top_k=top_k,
@@ -77,12 +83,15 @@ def test_retrieval(
     )
 
     assert len(ranked_results) == len(queries)
-    for query, page_ids in zip(queries, ranked_results):
+    for row, page_ids in zip(query_rows, ranked_results):
         assert len(page_ids) <= top_k
         assert len(page_ids) == len(set(page_ids))
         assert all(isinstance(page_id, int) for page_id in page_ids)
 
-        log(f"\nQuery: {query}", file=log_file)
+        relevant_ids = sorted(row["relevant_page_ids"])
+        log(f"\nQuery ID: {row['query_id']}", file=log_file)
+        log(f"Query: {row['query']}", file=log_file)
+        log(f"Relevant page IDs: {relevant_ids}", file=log_file)
         log(f"Top page IDs: {page_ids}", file=log_file)
 
     log("\nRetrieval test passed.", file=log_file)
@@ -134,8 +143,15 @@ def main() -> None:
         raise ValueError("--sample-size must be greater than zero")
     if args.top_k <= 0:
         raise ValueError("--top-k must be greater than zero")
+    if args.query_count <= 0:
+        raise ValueError("--query-count must be greater than zero")
 
     public_rows = load_query_file(PUBLIC_QUERIES_PATH)
+    if args.query_count > len(public_rows):
+        raise ValueError(
+            f"--query-count cannot exceed {len(public_rows)} public queries"
+        )
+
     required_page_ids = {
         page_id
         for row in public_rows
@@ -154,6 +170,7 @@ def main() -> None:
         log(f"Test run: {timestamp}", file=log_file)
         log(
             f"sample_size={args.sample_size}, top_k={args.top_k}, "
+            f"query_count={args.query_count}, query_seed={args.query_seed}, "
             f"artifacts_dir={args.artifacts_dir.resolve()}",
             file=log_file,
         )
@@ -166,9 +183,10 @@ def main() -> None:
         log(f"Built test index with {len(page_ids)} vectors.", file=log_file)
         log(f"Artifacts: {args.artifacts_dir.resolve()}", file=log_file)
 
-        queries = args.queries or DEFAULT_QUERIES
+        random_generator = random.Random(args.query_seed)
+        sampled_rows = random_generator.sample(public_rows, args.query_count)
         test_retrieval(
-            queries,
+            sampled_rows,
             top_k=args.top_k,
             artifacts_dir=args.artifacts_dir,
             log_file=log_file,

@@ -55,3 +55,193 @@ Sample evaluation
 Covered public queries: 50/50
 Mean NDCG@10: 0.3830
 Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 15:07:04
+sample_size=10000, top_k=5, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 171397 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query: basketball championship
+Top page IDs: [22093, 14443, 20455, 22092, 27917]
+
+Query: scientific research and technology
+Top page IDs: [14285, 25524, 26833, 26700]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.1772
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 16:52:18
+sample_size=200, top_k=5, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 1888 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query: basketball championship
+Top page IDs: [51300, 36551, 9112, 3905, 27627]
+
+Query: scientific research and technology
+Top page IDs: [10013, 8722, 34028, 10101, 10005]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3830
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 16:59:50
+sample_size=200, top_k=5, query_count=5, query_seed=42, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 1888 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_041
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3327, 3511, 36503]
+Top page IDs: [31602, 53419, 56456, 33775, 3511]
+
+Query ID: q_public_008
+Query: When did automated assembly lines modernize a factory decades after the company was founded?
+Relevant page IDs: [33775]
+Top page IDs: [31602, 33775, 34448, 56456, 53419]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 20263, 22890, 2614, 3905]
+
+Query ID: q_public_048
+Query: Who was the on-court leader during a championship year that also saw a commemorative banner raised?
+Relevant page IDs: [21584, 28542, 45655, 54465]
+Top page IDs: [3905, 36551, 10052, 32656, 27627]
+
+Query ID: q_public_018
+Query: Where was the championship clinched in a Memorial Arena game?
+Relevant page IDs: [27627]
+Top page IDs: [28542, 10052, 3905, 27627, 32656]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3830
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 17:02:01
+sample_size=1000, top_k=5, query_count=5, query_seed=42, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 14678 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_041
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3327, 3511, 36503]
+Top page IDs: [31602, 53419, 56456, 33775, 10635]
+
+Query ID: q_public_008
+Query: When did automated assembly lines modernize a factory decades after the company was founded?
+Relevant page IDs: [33775]
+Top page IDs: [1146, 10251, 31602, 10826, 33775]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 11278, 20263, 22890, 2614]
+
+Query ID: q_public_048
+Query: Who was the on-court leader during a championship year that also saw a commemorative banner raised?
+Relevant page IDs: [21584, 28542, 45655, 54465]
+Top page IDs: [3905, 36551, 10052, 32656, 27627]
+
+Query ID: q_public_018
+Query: Where was the championship clinched in a Memorial Arena game?
+Relevant page IDs: [27627]
+Top page IDs: [11237, 28542, 10052, 11232, 11238]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3264
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 17:15:59
+sample_size=1000, top_k=5, query_count=5, query_seed=42, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 14678 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_041
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3327, 3511, 36503]
+Top page IDs: [31602, 53419, 56456, 33775, 10635]
+
+Query ID: q_public_008
+Query: When did automated assembly lines modernize a factory decades after the company was founded?
+Relevant page IDs: [33775]
+Top page IDs: [1146, 10251, 31602, 10826, 33775]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 11278, 20263, 22890, 2614]
+
+Query ID: q_public_048
+Query: Who was the on-court leader during a championship year that also saw a commemorative banner raised?
+Relevant page IDs: [21584, 28542, 45655, 54465]
+Top page IDs: [3905, 36551, 10052, 32656, 27627]
+
+Query ID: q_public_018
+Query: Where was the championship clinched in a Memorial Arena game?
+Relevant page IDs: [27627]
+Top page IDs: [11237, 28542, 10052, 11232, 11238]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3264
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 17:27:51
+sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 14678 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_009
+Query: Which physicist's team improved stability over thermal imaging pipelines two years before publication?
+Relevant page IDs: [5508]
+Top page IDs: [18779, 5508, 13638, 8722, 2728]
+
+Query ID: q_public_016
+Query: Who led the group that published reproducible laboratory results on stress imaging through harmonic vibration analysis?
+Relevant page IDs: [1904]
+Top page IDs: [1904, 13638, 26566, 18779, 2728]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 11278, 20263, 22890, 2614]
+
+Query ID: q_public_040
+Query: How do a CEO's agreements, a company's research division, and overseas revenue growth connect?
+Relevant page IDs: [5731, 34448, 45012]
+Top page IDs: [10363, 33775, 10883, 10517, 10166]
+
+Query ID: q_public_029
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3481, 37655]
+Top page IDs: [31602, 53419, 56456, 33775, 10635]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3264
+Note: this diagnostic score uses a reduced corpus.

@@ -4,6 +4,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
+from streamlit import title
+
 from utils import entry_text
 
 
@@ -16,11 +18,12 @@ class Chunk:
 
 def chunk_entry(record):
     page_id = int(record["page_id"])
-    text = entry_text(record)
+    title = record.get("title", "")
+    text = f"Title: {title}\nContent: {' '.join(chunk_words)}"
 
     words = text.split()
 
-    CHUNK_SIZE = 200
+    CHUNK_SIZE = 150
     OVERLAP = 50
 
     chunks = []
