@@ -20,21 +20,27 @@ def search_batch(
     """
     Return ranked page_id lists (best first) for each query.
 
-    Default: brute-force dot product on L2-normalized vectors.
-    Replace with FAISS / reranking as needed.
+    Search the offline-built FAISS index using cosine similarity
+    (inner product over L2-normalized embeddings).
     """
-    corpus_vectors, page_ids = load_index(artifacts_dir)
     query_vectors = embed_queries(queries)
     if query_vectors.size == 0:
         return [[] for _ in queries]
 
-    scores = query_vectors @ corpus_vectors.T
+    faiss_index, page_ids = load_index(artifacts_dir)
+    query_vectors = np.ascontiguousarray(query_vectors, dtype=np.float32)
+
+    # Search extra rows because several chunks may map to the same page_id.
+    search_k = min(faiss_index.ntotal, max(top_k * 4, top_k))
+    _, neighbor_indices = faiss_index.search(query_vectors, search_k)
+
     ranked: List[List[int]] = []
-    for row in scores:
-        order = np.argsort(-row)
+    for row in neighbor_indices:
         seen: set[int] = set()
         ids: List[int] = []
-        for idx in order:
+        for idx in row:
+            if idx < 0:
+                continue
             pid = page_ids[int(idx)]
             if pid in seen:
                 continue
