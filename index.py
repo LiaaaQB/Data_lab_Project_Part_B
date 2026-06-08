@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from itertools import islice
 from pathlib import Path
 from typing import Any, List, Optional, Tuple
 
@@ -31,6 +32,7 @@ def build_index(
     *,
     entries_dir: Optional[Path] = None,
     artifacts_dir: Optional[Path] = None,
+    max_entries: Optional[int] = None,
 ) -> Tuple[np.ndarray, List[int]]:
     """
     Embed the full corpus and persist artifacts.
@@ -40,7 +42,17 @@ def build_index(
     aggregate to page_id in retrieve.py.
     """
     out_dir = artifacts_dir or ensure_artifacts_dir()
-    records = list(iter_entries(entries_dir))
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    records_iter = iter_entries(entries_dir)
+    records = list(
+        islice(records_iter, max_entries)
+        if max_entries is not None
+        else records_iter
+    )
+    if not records:
+        raise ValueError("Cannot build an index from an empty corpus sample")
+
     chunks: List[Chunk] = chunk_corpus(records)
     texts = [c.text for c in chunks]
     vectors = embed_texts(texts)
