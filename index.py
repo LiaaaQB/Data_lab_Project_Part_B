@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from itertools import islice
 from pathlib import Path
-from typing import Any, List, Optional, Tuple
+from typing import Any, List, Optional, Set, Tuple
 
 import numpy as np
 
@@ -33,6 +33,7 @@ def build_index(
     entries_dir: Optional[Path] = None,
     artifacts_dir: Optional[Path] = None,
     max_entries: Optional[int] = None,
+    required_page_ids: Optional[Set[int]] = None,
 ) -> Tuple[np.ndarray, List[int]]:
     """
     Embed the full corpus and persist artifacts.
@@ -44,12 +45,43 @@ def build_index(
     out_dir = artifacts_dir or ensure_artifacts_dir()
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    records_iter = iter_entries(entries_dir)
-    records = list(
-        islice(records_iter, max_entries)
-        if max_entries is not None
-        else records_iter
-    )
+    required_ids = required_page_ids or set()
+    if max_entries is not None and len(required_ids) > max_entries:
+        raise ValueError(
+            f"Sample size {max_entries} is smaller than the "
+            f"{len(required_ids)} required pages"
+        )
+
+    if required_ids:
+        required_records = []
+        filler_records = []
+        for record in iter_entries(entries_dir):
+            if int(record["page_id"]) in required_ids:
+                required_records.append(record)
+            elif max_entries is None or len(filler_records) < max_entries:
+                filler_records.append(record)
+
+        found_ids = {int(record["page_id"]) for record in required_records}
+        missing_ids = required_ids - found_ids
+        if missing_ids:
+            raise ValueError(
+                f"Required page IDs are missing from the corpus: {sorted(missing_ids)}"
+            )
+
+        filler_limit = (
+            None
+            if max_entries is None
+            else max_entries - len(required_records)
+        )
+        records = required_records + filler_records[:filler_limit]
+    else:
+        records_iter = iter_entries(entries_dir)
+        records = list(
+            islice(records_iter, max_entries)
+            if max_entries is not None
+            else records_iter
+        )
+
     if not records:
         raise ValueError("Cannot build an index from an empty corpus sample")
 

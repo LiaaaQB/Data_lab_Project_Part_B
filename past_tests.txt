@@ -1,0 +1,57 @@
+
+========================================================================
+Test run: 2026-06-08 13:37:38
+sample_size=200, top_k=5, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 1888 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query: basketball championship
+Top page IDs: [51300, 36551, 9112, 3905, 27627]
+
+Query: scientific research and technology
+Top page IDs: [10013, 8722, 34028, 10101, 10005]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3830
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 13:39:38
+sample_size=200, top_k=5, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 1888 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query: basketball championship
+Top page IDs: [51300, 36551, 9112, 3905, 27627]
+
+Query: scientific research and technology
+Top page IDs: [10013, 8722, 34028, 10101, 10005]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3830
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-08 13:41:37
+sample_size=200, top_k=5, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 1888 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query: basketball championship
+Top page IDs: [51300, 36551, 9112, 3905, 27627]
+
+Query: scientific research and technology
+Top page IDs: [10013, 8722, 34028, 10101, 10005]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3830
+Note: this diagnostic score uses a reduced corpus.
