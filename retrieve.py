@@ -31,22 +31,40 @@ def search_batch(
     query_vectors = np.ascontiguousarray(query_vectors, dtype=np.float32)
 
     # Search extra rows because several chunks may map to the same page_id.
-    search_k = min(faiss_index.ntotal, max(top_k * 4, top_k))
-    _, neighbor_indices = faiss_index.search(query_vectors, search_k)
+    search_k = min(faiss_index.ntotal, 200)
+
+    scores, neighbor_indices = faiss_index.search(query_vectors, search_k)
 
     ranked: List[List[int]] = []
-    for row in neighbor_indices:
-        seen: set[int] = set()
-        ids: List[int] = []
-        for idx in row:
+
+    for score_row, index_row in zip(scores, neighbor_indices):
+        page_to_scores: dict[int, list[float]] = {}
+
+        for score, idx in zip(score_row, index_row):
             if idx < 0:
                 continue
+
             pid = page_ids[int(idx)]
-            if pid in seen:
-                continue
-            seen.add(pid)
-            ids.append(pid)
-            if len(ids) >= top_k:
-                break
+
+            if pid not in page_to_scores:
+                page_to_scores[pid] = []
+
+            page_to_scores[pid].append(float(score))
+
+        page_final_scores = []
+
+        for pid, chunk_scores in page_to_scores.items():
+            chunk_scores.sort(reverse=True)
+
+            # Main score = best chunk.
+            # Small bonus = multiple good chunks from same page.
+            final_score = chunk_scores[0] + 0.1 * sum(chunk_scores[:3])
+
+            page_final_scores.append((pid, final_score))
+
+        page_final_scores.sort(key=lambda x: x[1], reverse=True)
+
+        ids = [pid for pid, _ in page_final_scores[:top_k]]
         ranked.append(ids)
+
     return ranked
