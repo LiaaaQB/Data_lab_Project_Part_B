@@ -14,16 +14,38 @@ class Chunk:
     text: str
 
 
-def chunk_entry(record: Dict[str, Any]) -> List[Chunk]:
-    """
-    Split one corpus entry into retrieval units.
-
-    Default: single chunk per page (no chunking). Override for fixed-size or
-    semantic chunking strategies.
-    """
+def chunk_entry(record):
     page_id = int(record["page_id"])
     text = entry_text(record)
-    return [Chunk(page_id=page_id, chunk_id=0, text=text)]
+
+    words = text.split()
+
+    CHUNK_SIZE = 200
+    OVERLAP = 50
+
+    chunks = []
+    chunk_id = 0
+
+    step = CHUNK_SIZE - OVERLAP
+
+    for start in range(0, len(words), step):
+
+        chunk_words = words[start:start + CHUNK_SIZE]
+
+        if len(chunk_words) < 20:
+            continue
+
+        chunks.append(
+            Chunk(
+                page_id=page_id,
+                chunk_id=chunk_id,
+                text=" ".join(chunk_words)
+            )
+        )
+
+        chunk_id += 1
+
+    return chunks
 
 
 def chunk_corpus(records: List[Dict[str, Any]]) -> List[Chunk]:
