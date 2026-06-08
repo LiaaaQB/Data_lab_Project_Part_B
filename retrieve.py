@@ -27,7 +27,7 @@ def search_batch(
     if query_vectors.size == 0:
         return [[] for _ in queries]
 
-    faiss_index, page_ids = load_faiss_index(artifacts_dir)
+    faiss_index, page_ids = load_index(artifacts_dir)
     query_vectors = np.ascontiguousarray(query_vectors, dtype=np.float32)
 
     # Search extra rows because several chunks may map to the same page_id.
