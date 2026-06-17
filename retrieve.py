@@ -31,7 +31,7 @@ def search_batch(
     query_vectors = np.ascontiguousarray(query_vectors, dtype=np.float32)
 
     # Search extra rows because several chunks may map to the same page_id.
-    search_k = min(faiss_index.ntotal, 200)
+    search_k = min(faiss_index.ntotal, 1000)
 
     scores, neighbor_indices = faiss_index.search(query_vectors, search_k)
 
@@ -58,7 +58,7 @@ def search_batch(
 
             # Main score = best chunk.
             # Small bonus = multiple good chunks from same page.
-            final_score = chunk_scores[0] + 0.1 * sum(chunk_scores[:3])
+            final_score = max(chunk_scores)
 
             page_final_scores.append((pid, final_score))
 

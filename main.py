@@ -31,10 +31,12 @@ def run(queries: List[str]) -> List[List[int]]:
 
 
 def build_offline_index() -> None:
+    print("BUILD INDEX STARTED")
     """Run once locally to create artifacts/ (not timed at grading)."""
     build_index()
 
 
 if __name__ == "__main__":
+    print("MAIN STARTED")
     build_offline_index()
     print("Index built under artifacts/. Run: python scripts/eval_public.py")
