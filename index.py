@@ -84,9 +84,12 @@ def build_index(
 
     if not records:
         raise ValueError("Cannot build an index from an empty corpus sample")
-
+    print("STARTING CHUNKING")
     chunks: List[Chunk] = chunk_corpus(records)
+    print(f"CHUNKS CREATED: {len(chunks)}")
     texts = [c.text for c in chunks]
+    print(f"Number of chunks: {len(texts)}")
+    print(f"First chunk length: {len(texts[0].split())}")
     vectors = embed_texts(texts)
     page_ids = [c.page_id for c in chunks]
 

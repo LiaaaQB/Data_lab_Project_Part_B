@@ -18,13 +18,14 @@ class Chunk:
 
 def chunk_entry(record):
     page_id = int(record["page_id"])
+
     title = record.get("title", "")
-    text = f"Title: {title}\nContent: {' '.join(chunk_words)}"
+    text = entry_text(record)
 
     words = text.split()
 
-    CHUNK_SIZE = 150
-    OVERLAP = 50
+    CHUNK_SIZE = 500
+    OVERLAP = 100
 
     chunks = []
     chunk_id = 0
@@ -42,7 +43,7 @@ def chunk_entry(record):
             Chunk(
                 page_id=page_id,
                 chunk_id=chunk_id,
-                text=" ".join(chunk_words)
+                text=f"Title: {title}\n\n" + " ".join(chunk_words)
             )
         )
 

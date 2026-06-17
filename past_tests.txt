@@ -245,3 +245,159 @@ Sample evaluation
 Covered public queries: 50/50
 Mean NDCG@10: 0.3264
 Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-17 11:50:13
+sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 5813 vectors.
+Artifacts: C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_009
+Query: Which physicist's team improved stability over thermal imaging pipelines two years before publication?
+Relevant page IDs: [5508]
+Top page IDs: [8722, 5508, 36881, 42955, 7026]
+
+Query ID: q_public_016
+Query: Who led the group that published reproducible laboratory results on stress imaging through harmonic vibration analysis?
+Relevant page IDs: [1904]
+Top page IDs: [1904, 1141, 2728, 13638, 42955]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 11278, 20263, 10653, 29682]
+
+Query ID: q_public_040
+Query: How do a CEO's agreements, a company's research division, and overseas revenue growth connect?
+Relevant page IDs: [5731, 34448, 45012]
+Top page IDs: [10363, 10883, 10517, 10166, 11616]
+
+Query ID: q_public_029
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3481, 37655]
+Top page IDs: [10635, 10638, 11592, 10772, 31602]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.2413
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-17 12:04:07
+sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 5813 vectors.
+Artifacts: C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_009
+Query: Which physicist's team improved stability over thermal imaging pipelines two years before publication?
+Relevant page IDs: [5508]
+Top page IDs: [8722, 5508, 36881, 42955, 7026]
+
+Query ID: q_public_016
+Query: Who led the group that published reproducible laboratory results on stress imaging through harmonic vibration analysis?
+Relevant page IDs: [1904]
+Top page IDs: [1904, 2728, 13638, 42955, 37066]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 20263, 11278, 2614, 29682]
+
+Query ID: q_public_040
+Query: How do a CEO's agreements, a company's research division, and overseas revenue growth connect?
+Relevant page IDs: [5731, 34448, 45012]
+Top page IDs: [10363, 10883, 10517, 10166, 1087]
+
+Query ID: q_public_029
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3481, 37655]
+Top page IDs: [10635, 11592, 10638, 31602, 53419]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3084
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-17 12:12:10
+sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 5813 vectors.
+Artifacts: C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_009
+Query: Which physicist's team improved stability over thermal imaging pipelines two years before publication?
+Relevant page IDs: [5508]
+Top page IDs: [8722, 5508, 36881, 42955, 7026]
+
+Query ID: q_public_016
+Query: Who led the group that published reproducible laboratory results on stress imaging through harmonic vibration analysis?
+Relevant page IDs: [1904]
+Top page IDs: [1904, 2728, 13638, 42955, 37066]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 20263, 11278, 2614, 29682]
+
+Query ID: q_public_040
+Query: How do a CEO's agreements, a company's research division, and overseas revenue growth connect?
+Relevant page IDs: [5731, 34448, 45012]
+Top page IDs: [10363, 10883, 10517, 10166, 1087]
+
+Query ID: q_public_029
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3481, 37655]
+Top page IDs: [10635, 11592, 10638, 31602, 53419]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3084
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-17 12:17:31
+sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 5813 vectors.
+Artifacts: C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_009
+Query: Which physicist's team improved stability over thermal imaging pipelines two years before publication?
+Relevant page IDs: [5508]
+Top page IDs: [8722, 5508, 36881, 42955, 7026]
+
+Query ID: q_public_016
+Query: Who led the group that published reproducible laboratory results on stress imaging through harmonic vibration analysis?
+Relevant page IDs: [1904]
+Top page IDs: [1904, 2728, 13638, 42955, 37066]
+
+Query ID: q_public_002
+Query: Who captained the Los Angeles basketball franchise when they won the 1987 championship?
+Relevant page IDs: [9112]
+Top page IDs: [9112, 20263, 11278, 2614, 29682]
+
+Query ID: q_public_040
+Query: How do a CEO's agreements, a company's research division, and overseas revenue growth connect?
+Relevant page IDs: [5731, 34448, 45012]
+Top page IDs: [10363, 10883, 10517, 10166, 1087]
+
+Query ID: q_public_029
+Query: What links profit-sharing labor policy, alloy research partnerships, and spin-off software products?
+Relevant page IDs: [3481, 37655]
+Top page IDs: [10635, 11592, 10638, 31602, 53419]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 50/50
+Mean NDCG@10: 0.3084
+Note: this diagnostic score uses a reduced corpus.
+
+========================================================================
+Test run: 2026-06-17 12:24:21
+sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
