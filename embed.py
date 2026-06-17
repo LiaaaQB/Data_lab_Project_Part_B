@@ -1,4 +1,4 @@
-"""Embedding utilities (sentence-transformers/all-MiniLM-L6-v2 only)."""
+"""Embedding utilities for MiniLM corpus/query retrieval embeddings."""
 from __future__ import annotations
 
 from typing import List, Sequence
@@ -6,15 +6,36 @@ from typing import List, Sequence
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-from utils import EMBEDDING_MODEL_NAME
+from utils import EMBEDDING_MODEL_NAME, MODEL_DEVICE
 
 _model: SentenceTransformer | None = None
+_device: str | None = None
+
+
+def get_device() -> str:
+    """Use the GPU when available, with a CPU fallback for local testing."""
+    global _device
+    if _device is not None:
+        return _device
+
+    if MODEL_DEVICE != "auto":
+        _device = MODEL_DEVICE
+        return _device
+
+    try:
+        import torch
+
+        _device = "cuda" if torch.cuda.is_available() else "cpu"
+    except ImportError:
+        _device = "cpu"
+
+    return _device
 
 
 def get_model() -> SentenceTransformer:
     global _model
     if _model is None:
-        _model = SentenceTransformer(EMBEDDING_MODEL_NAME)
+        _model = SentenceTransformer(EMBEDDING_MODEL_NAME, device=get_device())
     return _model
 
 

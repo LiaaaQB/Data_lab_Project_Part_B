@@ -10,7 +10,12 @@ import numpy as np
 
 from chunk import Chunk, chunk_corpus
 from embed import embed_texts
-from utils import ARTIFACTS_DIR, ensure_artifacts_dir, iter_entries
+from utils import (
+    ARTIFACTS_DIR,
+    EMBEDDING_MODEL_NAME,
+    ensure_artifacts_dir,
+    iter_entries,
+)
 
 INDEX_VECTORS_NAME = "index_vectors.npy"
 INDEX_META_NAME = "index_meta.json"
@@ -104,7 +109,8 @@ def build_index(
     meta = {
         "page_ids": page_ids,
         "chunk_ids": [c.chunk_id for c in chunks],
-        "model": "sentence-transformers/all-MiniLM-L6-v2",
+        "chunk_texts": texts,
+        "model": EMBEDDING_MODEL_NAME,
         "num_vectors": len(page_ids),
         "dimension": dimension,
         "faiss_index": FAISS_INDEX_NAME,

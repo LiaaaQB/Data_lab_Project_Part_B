@@ -12,7 +12,7 @@ from index import build_index
 from retrieve import search_batch
 from utils import K_EVAL, PUBLIC_QUERIES_PATH
 
-DEFAULT_SAMPLE_SIZE = 1000
+DEFAULT_SAMPLE_SIZE = 200
 DEFAULT_TOP_K = 5
 DEFAULT_QUERY_COUNT = 5
 DEFAULT_QUERY_SEED = 22
