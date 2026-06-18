@@ -30,7 +30,7 @@ def chunk_entry(record):
 
     chunks = []
     chunk_id = 0
-
+    # Consecutive chunks overlap to preserve context across chunk boundaries.
     step = CHUNK_SIZE - OVERLAP
 
     for start in range(0, len(words), step):
@@ -47,6 +47,7 @@ def chunk_entry(record):
                 title=title,
                 start_word=start,
                 word_count=len(chunk_words),
+                # Include the page title together with the chunk text to provide additional context.
                 text=f"Title: {title}\n\n" + " ".join(chunk_words)
             )
         )
@@ -55,7 +56,7 @@ def chunk_entry(record):
 
     return chunks
 
-
+# Generate chunks for all pages in the corpus.
 def chunk_corpus(records: List[Dict[str, Any]]) -> List[Chunk]:
     chunks: List[Chunk] = []
     for record in records:
