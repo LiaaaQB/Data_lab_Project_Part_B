@@ -12,6 +12,7 @@ from chunk import Chunk, chunk_corpus
 from embed import embed_texts
 from utils import ARTIFACTS_DIR, ensure_artifacts_dir, iter_entries
 
+CHUNK_TEXTS_NAME = "chunk_texts.json"
 INDEX_VECTORS_NAME = "index_vectors.npy"
 INDEX_META_NAME = "index_meta.json"
 FAISS_INDEX_NAME = "index.faiss"
@@ -90,6 +91,9 @@ def build_index(
     texts = [c.text for c in chunks]
     print(f"Number of chunks: {len(texts)}")
     print(f"First chunk length: {len(texts[0].split())}")
+    (out_dir / CHUNK_TEXTS_NAME).write_text(
+    json.dumps(texts),
+    encoding="utf-8")
     vectors = embed_texts(texts)
     page_ids = [c.page_id for c in chunks]
 
@@ -143,4 +147,9 @@ def load_index( # The new load_index function that loads the FAISS index and pag
             "FAISS index and metadata are inconsistent: "
             f"{faiss_index.ntotal} vectors but {len(page_ids)} page IDs"
         )
-    return faiss_index, page_ids
+    chunk_texts = json.loads(
+    (root / CHUNK_TEXTS_NAME).read_text(
+        encoding="utf-8"
+    )
+)
+    return faiss_index, page_ids, chunk_texts
