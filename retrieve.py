@@ -12,8 +12,7 @@ from index import load_index
 from utils import K_EVAL
 
 
-
-
+# Load the CrossEncoder model.
 _reranker = None
 
 def get_reranker():
@@ -58,7 +57,7 @@ def search_batch(
     for q_idx, (score_row, index_row) in enumerate(
         zip(scores, neighbor_indices)
     ):
-
+        # Building (query, chunk) pairs for CrossEncoder reranking.
         pairs = []
         candidate_indices = []
 
@@ -95,8 +94,11 @@ def search_batch(
 
         page_final_scores = []
 
+        # Aggregating chunk-level scores into page-level scores.
         for pid, chunk_scores in page_to_scores.items():
             chunk_scores.sort(reverse=True)
+            # Use the strongest chunk as the main signal and
+            # adding small contributions from additional relevant chunks.
             if len(chunk_scores) >= 3:
               final_score = (chunk_scores[0]+ 0.1 * chunk_scores[1] + 0.05 * chunk_scores[2]
     )
@@ -110,7 +112,7 @@ def search_batch(
             page_final_scores.append(
                 (pid, final_score)
             )
-
+        # Rank pages by their aggregated relevance score.
         page_final_scores.sort(
             key=lambda x: x[1],
             reverse=True
