@@ -27,11 +27,13 @@ During index construction the system:
 
 Generated artifacts:
 
+```text
 artifacts/
 ├── index.faiss
 ├── index_meta.json
 ├── index_vectors.npy
 └── chunk_texts.json
+```
 
 These artifacts are included in the repository and are used directly during evaluation.
 ## Retrieval Pipeline
