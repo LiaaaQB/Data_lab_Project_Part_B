@@ -64,3 +64,4 @@ Retrieval pipeline implementation
 This README
 
 No index rebuilding is required during grading. Evaluation uses the submitted artifacts directly.
+Link to video explanation: https://drive.google.com/file/d/1vMr7EGXZgWBytOWhLORCrFy4oGvCiDXk/view?usp=sharing
