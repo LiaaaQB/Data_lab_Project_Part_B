@@ -401,3 +401,41 @@ Note: this diagnostic score uses a reduced corpus.
 ========================================================================
 Test run: 2026-06-17 12:24:21
 sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\Yana\PycharmProjects\Data_lab_Project_Part_B\testing_artifacts
+
+========================================================================
+Test run: 2026-06-18 16:44:44
+sample_size=1000, top_k=5, query_count=5, query_seed=22, artifacts_dir=C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+Built test index with 5813 vectors.
+Artifacts: C:\Users\tuskh\Documents\Technion 2026\Semester B\Data Lab\Project A\Section B\Data_lab_Project_Part_B\testing_artifacts
+
+Query ID: q_public_4
+Query: Which franchise player averaged 24 points in the last two games of a title series?
+Relevant page IDs: [2614, 3905, 22890]
+Top page IDs: [28865, 29682, 3905, 2614, 28542]
+
+Query ID: q_public_7
+Query: When did automated assembly lines modernize a factory decades after the company was founded?
+Relevant page IDs: [33775, 34690, 56456]
+Top page IDs: [1146, 33775, 5731, 53419, 34448]
+
+Query ID: q_public_0
+Query: Who was the point guard that won a seven-game finals series in the 1820s?
+Relevant page IDs: [20263]
+Top page IDs: [20263, 51300, 36551, 3905, 29682]
+
+Query ID: q_public_19
+Query: What can be learned about a city's economy, geography, and transport network together?
+Relevant page IDs: [4740, 11105, 15135, 40903, 41307, 44025, 44582, 48603, 50630]
+Top page IDs: [4740, 5251, 40903, 37855, 15135]
+
+Query ID: q_public_14
+Query: Where was the championship clinched in a Memorial Arena game?
+Relevant page IDs: [27627]
+Top page IDs: [28542, 10052, 22890, 26879, 3905]
+
+Retrieval test passed.
+
+Sample evaluation
+Covered public queries: 29/29
+Mean NDCG@10: 0.5195
+Note: this diagnostic score uses a reduced corpus.
