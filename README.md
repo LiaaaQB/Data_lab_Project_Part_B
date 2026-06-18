@@ -11,9 +11,9 @@ Corpus lives at **`data/Wikipedia Entries/`** (included in the handout).
 
 ## Build index 
 
-The index is built offline and stored under the artifacts/ directory.
+The index is built offline and stored under the `artifacts/` directory.
 
-Run:
+Run once locally to create the retrieval artifacts:
 ```bash
 python main.py
 ```
@@ -21,7 +21,7 @@ During index construction the system:
 
 1. Loads Wikipedia pages from the corpus.
 2. Splits pages into overlapping text chunks.
-3. Generates embeddings using: sentence-transformers/all-MiniLM-L6-v2
+3. Generates embeddings using: `sentence-transformers/all-MiniLM-L6-v2`
 4. Builds a FAISS inner-product index over L2-normalized embeddings.
 5. Saves all required retrieval artifacts.
 
@@ -36,18 +36,21 @@ artifacts/
 ```
 
 These artifacts are included in the repository and are used directly during evaluation.
+
 ## Retrieval Pipeline
+
+The system combines dense retrieval using MiniLM embeddings with CrossEncoder reranking to improve ranking quality.
 
 At query time:
 
 1. Query embeddings are generated using:
-sentence-transformers/all-MiniLM-L6-v2
+   `sentence-transformers/all-MiniLM-L6-v2`.
 2. FAISS retrieves the top candidate chunks from the offline index.
-3. Candidate chunks are reranked using:
-cross-encoder/ms-marco-MiniLM-L-6-v2
+3. Candidate chunks are reranked using the CrossEncoder model
+   `cross-encoder/ms-marco-MiniLM-L-6-v2`.
 4. Chunk scores are aggregated at the page level.
 5. The top-ranked page IDs are returned.
-
+   
 ## Public self-test
 
 After building, verify a fresh run loads your submitted artifacts (no rebuild):
@@ -60,10 +63,10 @@ python scripts/eval_public.py
 
 The repository contains:
 
-Source code
-Required artifacts under artifacts/
-Retrieval pipeline implementation
-This README
+- Source code
+- Required artifacts under `artifacts/`
+- Retrieval pipeline implementation
+- This README
 
 No index rebuilding is required during grading. 
 Evaluation uses the submitted artifacts directly.
