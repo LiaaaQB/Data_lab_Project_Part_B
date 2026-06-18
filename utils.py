@@ -12,8 +12,14 @@ PUBLIC_QUERIES_PATH = DATA_DIR / "public_queries.json"
 ARTIFACTS_DIR = STUDENT_ROOT / "artifacts"
 
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+CROSS_ENCODER_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+MODEL_DEVICE = "auto"
 K_EVAL = 10
-
+CROSS_ENCODER_CANDIDATE_CHUNKS = 100
+CROSS_ENCODER_BATCH_SIZE = 32
+PAGE_EVIDENCE_BONUS = 0.03
+PAGE_EVIDENCE_MIN_RERANK_SCORE = 0.0
+PAGE_EVIDENCE_MAX_CHUNKS = 3
 
 def normalize_page_id(value: Any) -> int:
     """Coerce page_id from JSON (int or numeric string) to int."""
