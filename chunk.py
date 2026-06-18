@@ -4,8 +4,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
-from streamlit import title
-
 from utils import entry_text
 
 
@@ -13,6 +11,9 @@ from utils import entry_text
 class Chunk:
     page_id: int
     chunk_id: int
+    title: str
+    start_word: int
+    word_count: int
     text: str
 
 
@@ -43,6 +44,9 @@ def chunk_entry(record):
             Chunk(
                 page_id=page_id,
                 chunk_id=chunk_id,
+                title=title,
+                start_word=start,
+                word_count=len(chunk_words),
                 text=f"Title: {title}\n\n" + " ".join(chunk_words)
             )
         )
